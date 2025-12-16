@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<title>Andreja Sandu | Application Support & QA</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg-dark: #222528;
+    --accent-blue: #3679ff;
+    --accent-green: #2ecc71;
+    --card-bg: #333333;
+    --text-light: #f4f4f4;
+    --text-grey: #9a9a9a;
+    --accent-tomato: #ff6347;
+}
+* {
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+body {
+    margin: 0;
+    padding: 40px 20px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--bg-dark), #2d3238);
+    color: var(--text-light);
+    text-align: center;
+}
+/* ---------- HERO ---------- */
+.hero {
+    max-width: 900px;
+    margin: 0 auto 50px;
+}
+.hero h1 {
+    font-size: 46px;
+    color: var(--accent-tomato);
+    margin-bottom: 10px;
+    text-shadow: 0 2px 10px rgba(255, 99, 71, 0.3);
+}
+.subtitle {
+    color: var(--text-grey);
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 0 auto 30px;
+    white-space: nowrap;
+}
+/* ---------- BUTTONS cu RIPPLE EFFECT ---------- */
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+.btn {
+    padding: 13px 28px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    color: #fff;
+    background: linear-gradient(135deg, #64625f, #4a4846);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+.btn:hover {
+    background: linear-gradient(135deg, var(--accent-blue), #2d5fd9);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(54, 121, 255, 0.4);
+}
+.btn.contact {
+    background: linear-gradient(135deg, var(--accent-green), #27ae60);
+    box-shadow: 0 4px 20px rgba(46, 204, 113, 0.4);
+}
+.btn.contact:hover {
+    background: linear-gradient(135deg, #27ae60, #229954);
+    box-shadow: 0 6px 25px rgba(46, 204, 113, 0.6);
+}
+/* ---------- INFO SECTIONS ---------- */
+.info {
+    display: none;
+    max-width: 800px;
+    margin: 30px auto;
+    text-align: center;
+    animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.info p {
+    color: var(--text-grey);
+    line-height: 1.8;
+    font-size: 16px;
+}
+#skills p {
+    text-align: center;
+}
+#contact .contact-details {
+    text-align: center;
+    margin-top: 15px;
+    color: var(--text-grey);
+}
+/* ---------- CARDS cu EFECTE HOVER ---------- */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    max-width: 1400px;
+    margin: 60px auto;
+}
+.card {
+    width: 320px;
+    background: linear-gradient(135deg, var(--card-bg), #2a2a2a);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: left;
+    border-top: 5px solid var(--accent-blue);
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(54, 121, 255, 0.1) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(54, 121, 255, 0.4);
+}
+.card:hover::before {
+    opacity: 1;
+}
+.card h2 {
+    color: var(--accent-blue);
+    text-align: center;
+    margin-top: 0;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.card ul {
+    padding-left: 18px;
+    line-height: 1.8;
+}
+.card li {
+    margin-bottom: 10px;
+}
+/* ---------- EXPERIENCE ---------- */
+.experience {
+    max-width: 900px;
+    margin: 0 auto 60px;
+    text-align: center;
+}
+.experience h2 {
+    color: var(--accent-blue);
+    text-align: center;
+}
+.experience ul {
+    columns: 2;
+    column-gap: 280px;
+    color: var(--text-grey);
+    list-style-position: outside;
+    padding-left: 20px;
+    display: inline-block;
+    text-align: left;
+}
+.experience-wrapper {
+    text-align: center;
+}
+@media (max-width: 768px) {
+    .experience ul {
+        columns: 1;
+    }
+}
+/* ---------- FOOTER ---------- */
+footer {
+    margin-top: 60px;
+    color: var(--text-grey);
+    font-size: 14px;
+}
+footer a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    margin: 0 10px;
+}
+</style>
+</head>
+<body>
+<div class="hero">
+    <h1>
+        <span style="font-size:48px;">👋</span> <span id="welcome"></span>
+    </h1>
+    <p class="subtitle">
+        Sunt <b>Andreja Sandu</b> si ajut proiectele sa&nbsp;functioneze bine, stabil si&nbsp;fara&nbsp;batai&nbsp;de&nbsp;cap.
+    </p>
+    <div class="buttons">
+        <button class="btn" onclick="toggle('about')">Despre mine</button>
+        <button class="btn" onclick="toggle('skills')">Abilitati</button>
+        <button class="btn" onclick="toggle('recommend')">Ce ma recomanda</button>
+        <button class="btn contact" onclick="toggle('contact')">Contact</button>
+    </div>
+    <div id="about" class="info">
+        <p>
+            Daca ai ajuns aici si te gandesti sa citesti acest profil, esti pe o cale gresita. Renunta in acest moment!<br>Daca tot ai ramas, e clar, astepti niste argumente.<br>Mi-am inceput pregatirea profesionala in Romania si am continuat-o in zona de suport tehnic, testare QA si operatiuni digitale. Am studiat o perioada arhitectura si artele plastice, unde am invatat disciplina, atentia la detalii si gandirea structurata, dar am realizat repede ca domeniul presupune compromisuri cu care nu am rezonat.<br>Imi place sa pun ordine in haos, sa inteleg sistemele si sa le fac sa functioneze. Nu promit minuni, dar livrez la timp si aduc claritate. In peste 7 ani de munca, am strans o serie de abilitati pe care le pot pune la treaba in folosul afacerii tale.
+        </p>
+    </div>
+    <div id="skills" class="info">
+        <p>
+            • Application & IT Support (ERP / CRM / CMS)<br>
+            • Manual QA Testing & Debugging (DevTools, Postman, BlueStacks)<br>
+            • SQL – interogari, user management<br>
+            • Ticketing systems (Jira, WHMCS, Zendesk)<br>
+            • Hosting & Email (cPanel, POP3 / IMAP / SMTP)<br>
+            • UX & design de baza (Figma, Photoshop)
+        </p>
+    </div>
+    <div id="recommend" class="info">
+        <p>
+            In relatia cu utilizatorii am grija sa explic clar, fara jargon, mereu orientata spre nevoile lor.
+            Experienta mi-a aratat ca oamenii apreciaza cel mai mult cand lucrurile
+            functioneaza simplu si logic. Cu fiecare colaborare, incerc sa aduc utilizatorul mai aproape de sistem si sistemul mai aproape de utilizator.<br>Scopul fiind o experienta reala de intelegere si utilizare.
+        </p>
+    </div>
+    <div id="contact" class="info">
+        <p>
+     Daca simti ca te pot ajuta si vrei sa povestim mai multe, foloseste adresa de email de mai jos si ne auzim curand.
+        </p>
+        <div class="contact-details">
+            📍 Bucharest, Romania<br>
+            📧 salut.andreead@gmail.com<br> 
+        </div>
+    </div>
+</div>
+<div class="cards">
+    <div class="card">
+        <h2>IT & Application Support</h2>
+        <ul>
+            <li>Suport tehnic remote</li>
+            <li>Administrare utilizatori & permisiuni</li>
+            <li>Troubleshooting aplicatii</li>
+            <li>Training si onboarding</li>
+            <li>Documentatie si ghiduri</li>
+        </ul>
+    </div>
+    <div class="card">
+        <h2>Marketplace & Ops</h2>
+        <ul>
+            <li>Administrare marketplace-uri</li>
+            <li>CRM / ERP / CMS</li>
+            <li>Procesare date</li>
+            <li>Rapoarte si optimizare</li>
+        </ul>
+    </div>
+    <div class="card">
+        <h2>QA Manual</h2>
+        <ul>
+            <li>Testare functionala web & mobile</li>
+            <li>Identificare bug-uri</li>
+            <li>UI / UX checks</li>
+            <li>Documentare pasi & rapoarte</li>
+        </ul>
+    </div>
+</div>
+<div class="experience">
+    <h2>Am lucrat cu</h2>
+    <div class="experience-wrapper">
+        <ul>
+            <li>ERP / CRM (FGO; BT Go; Saga Software; Nexus; WindNET)</li>
+            <li>Microsoft SQL Server & administrare baze de date</li>
+            <li>Hosting & cPanel</li>
+            <li>Semnaturi electronice</li>
+            <li>Marketplace-uri eCommerce</li>
+            <li>Aplicatii SaaS B2B</li>
+        </ul>
+    </div>
+</div>
+<footer>
+    © 2025 Andreja.Sandu.
+</footer>
+<script>
+// Typing effect pentru "Bun venit!"
+const text = "Bun venit!"; 
+const el = document.getElementById("welcome");
+let i = 0;
+function typeLoop() {
+    if (i < text.length) {
+        el.textContent += text.charAt(i);
+        i++;
+        setTimeout(typeLoop, 120);
+    } else {
+        setTimeout(() => {
+            el.textContent = "";
+            i = 0;
+            typeLoop();
+        }, 800);
+    }
+}
+typeLoop();
+
+// Toggle pentru sectiunile info
+function toggle(id) {
+    document.querySelectorAll('.info').forEach(el => {
+        el.style.display = (el.id === id && el.style.display !== 'block') ? 'block' : 'none';
+    });
+}
+</script>
+</body>
+</html>
