@@ -2,7 +2,7 @@
 <html lang="ro">
 <head>
 <meta charset="UTF-8">
-<title>Andreja Sanduleasa | Application Support & QA</title>
+<title>Consultant iT / Testare aplicatii</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -36,6 +36,28 @@ body {
     color: var(--accent-tomato);
     margin-bottom: 10px;
     text-shadow: 0 2px 10px rgba(255, 99, 71, 0.3);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+.typing-gif {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+.cursor {
+    display: inline-block;
+    color: var(--accent-tomato);
+    animation: blink 0.8s infinite;
+    margin-left: 2px;
+}
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
 }
 .subtitle {
     color: var(--text-grey);
@@ -199,6 +221,111 @@ body {
         columns: 1;
     }
 }
+/* ---------- COOKIE POLICY ---------- */
+.cookie-policy {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #2a2d31, #1f2225);
+    backdrop-filter: blur(10px);
+    padding: 25px 30px;
+    box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    border-top: 2px solid var(--accent-blue);
+    display: none;
+}
+.cookie-policy.show {
+    display: block;
+    animation: slideUp 0.5s ease;
+}
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes slideDown {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+}
+.cookie-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+.cookie-text {
+    flex: 1;
+    min-width: 300px;
+}
+.cookie-text h3 {
+    margin: 0 0 10px 0;
+    color: var(--text-light);
+    font-size: 18px;
+    font-weight: 600;
+}
+.cookie-text p {
+    margin: 0;
+    color: var(--text-grey);
+    font-size: 14px;
+    line-height: 1.6;
+}
+.cookie-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+.cookie-btn {
+    padding: 12px 30px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+.cookie-btn.accept {
+    background: linear-gradient(135deg, var(--accent-green), #27ae60);
+    color: #fff;
+}
+.cookie-btn.accept:hover {
+    background: linear-gradient(135deg, #27ae60, #229954);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(46, 204, 113, 0.5);
+}
+.cookie-btn.decline {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: #fff;
+}
+.cookie-btn.decline:hover {
+    background: linear-gradient(135deg, #c0392b, #a93226);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.5);
+}
+@media (max-width: 768px) {
+    .cookie-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .cookie-buttons {
+        justify-content: center;
+    }
+}
 /* ---------- FOOTER ---------- */
 footer {
     margin-top: 60px;
@@ -215,16 +342,16 @@ footer a {
 <body>
 <div class="hero">
     <h1>
-        <span style="font-size:48px;">👋</span> <span id="welcome"></span>
+        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHFhNnoyMDhiNTdlNmY0OGM5MGpiMjcxb3Zsb3FsOWJhcHRnMjE2ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vFKqnCdLPNOKc/giphy.gif" alt="typing cat" class="typing-gif"><span id="welcome"></span><span class="cursor">|</span>
     </h1>
     <p class="subtitle">
-        Sunt <b>Andreja Sanduleasa</b> si ajut proiectele sa&nbsp;functioneze bine, stabil si&nbsp;fara&nbsp;batai&nbsp;de&nbsp;cap.
+        Sunt <b>Andreja</b> si ajut proiectele sa&nbsp;functioneze bine, stabil si&nbsp;fara&nbsp;batai&nbsp;de&nbsp;cap.
     </p>
     <div class="buttons">
-        <button class="btn" onclick="toggle('about')">Despre mine</button>
-        <button class="btn" onclick="toggle('skills')">Abilitati</button>
-        <button class="btn" onclick="toggle('recommend')">Ce ma recomanda</button>
-        <button class="btn contact" onclick="toggle('contact')">Contact</button>
+        <button class="btn" onmouseenter="show('about')" onmouseleave="hideAll()">Despre mine</button>
+        <button class="btn" onmouseenter="show('skills')" onmouseleave="hideAll()">Abilitati</button>
+        <button class="btn" onmouseenter="show('recommend')" onmouseleave="hideAll()">Ce ma recomanda</button>
+        <button class="btn contact" onmouseenter="show('contact')" onmouseleave="hideAll()">Contact</button>
     </div>
     <div id="about" class="info">
         <p>
@@ -302,34 +429,99 @@ footer a {
     </div>
 </div>
 <footer>
-    © 2025 Andreja.Sanduleasa.
+    © 2026 Andreja Sanduleasa, toate drepturile rezervate. 
 </footer>
+
+<div class="cookie-policy" id="cookiePolicy">
+    <div class="cookie-content">
+        <div class="cookie-text">
+            <h3>🍪 Cookie Policy</h3>
+            <p>Acest site folosește cookie-uri pentru a-ți îmbunătăți experiența de navigare și pentru a analiza traficul. Continuând să navighezi pe acest site, ești de acord cu utilizarea cookie-urilor conform politicii noastre.</p>
+        </div>
+        <div class="cookie-buttons">
+            <button class="cookie-btn accept" onclick="acceptCookies()">Acceptă</button>
+            <button class="cookie-btn decline" onclick="declineCookies()">Refuză</button>
+        </div>
+    </div>
+</div>
+
 <script>
-// Typing effect pentru "Bun venit!"
-const text = "Bun venit!"; 
+// Typing effect cu mai multe limbi - fara pauza
+const greetings = ["Bun venit!", "Hej!", "Welcome!"]; 
 const el = document.getElementById("welcome");
-let i = 0;
-function typeLoop() {
-    if (i < text.length) {
-        el.textContent += text.charAt(i);
-        i++;
-        setTimeout(typeLoop, 120);
-    } else {
-        setTimeout(() => {
-            el.textContent = "";
-            i = 0;
-            typeLoop();
-        }, 800);
+let greetingIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+function typeWriter() {
+    const currentGreeting = greetings[greetingIndex];
+    
+    if (!isDeleting && charIndex < currentGreeting.length) {
+        // Scriem caracterele
+        el.textContent += currentGreeting.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeWriter, 150); // Viteza de tastare
+    } else if (!isDeleting && charIndex === currentGreeting.length) {
+        // Trecem direct la stergere, fara pauza
+        isDeleting = true;
+        setTimeout(typeWriter, 800); // Pauza mica inainte de stergere
+    } else if (isDeleting && charIndex > 0) {
+        // Stergem caracterele
+        el.textContent = currentGreeting.substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(typeWriter, 100); // Viteza de stergere
+    } else if (isDeleting && charIndex === 0) {
+        // Trecem la urmatorul salut, fara pauza
+        isDeleting = false;
+        greetingIndex = (greetingIndex + 1) % greetings.length;
+        setTimeout(typeWriter, 300); // Pauza mica intre cuvinte
     }
 }
-typeLoop();
 
-// Toggle pentru sectiunile info
-function toggle(id) {
+typeWriter();
+
+// Afisare sectiuni la hover
+let hoverTimeout;
+function show(id) {
+    clearTimeout(hoverTimeout);
     document.querySelectorAll('.info').forEach(el => {
-        el.style.display = (el.id === id && el.style.display !== 'block') ? 'block' : 'none';
+        el.style.display = 'none';
     });
+    document.getElementById(id).style.display = 'block';
 }
+
+function hideAll() {
+    hoverTimeout = setTimeout(() => {
+        document.querySelectorAll('.info').forEach(el => {
+            el.style.display = 'none';
+        });
+    }, 200);
+}
+
+// Cookie policy
+window.addEventListener('load', () => {
+    const cookieChoice = localStorage.getItem('cookieChoice');
+    if (!cookieChoice) {
+        document.getElementById('cookiePolicy').classList.add('show');
+    }
+});
+
+function acceptCookies() {
+    localStorage.setItem('cookieChoice', 'accepted');
+    document.getElementById('cookiePolicy').style.animation = 'slideDown 0.5s ease';
+    setTimeout(() => {
+        document.getElementById('cookiePolicy').style.display = 'none';
+    }, 500);
+}
+
+function declineCookies() {
+    localStorage.setItem('cookieChoice', 'declined');
+    document.getElementById('cookiePolicy').style.animation = 'slideDown 0.5s ease';
+    setTimeout(() => {
+        document.getElementById('cookiePolicy').style.display = 'none';
+    }, 500);
+}
+
 </script>
 </body>
 </html>
