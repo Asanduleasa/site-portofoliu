@@ -2,7 +2,7 @@
 <html lang="ro">
 <head>
 <meta charset="UTF-8">
-<title>Consultant iT / Testare aplicatii</title>
+<title>🦅Consultant IT / Fauritor de bine: asand.ro</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -116,6 +116,7 @@ body {
     background: linear-gradient(135deg, #27ae60, #229954);
     box-shadow: 0 6px 25px rgba(46, 204, 113, 0.6);
 }
+
 /* ---------- INFO SECTIONS ---------- */
 .info {
     display: none;
@@ -141,6 +142,102 @@ body {
     margin-top: 15px;
     color: var(--text-grey);
 }
+
+/* =========================================================
+   PREVIEW BOX (HOVER) – Limitare la 3 rânduri
+   ========================================================= */
+#previewBox {
+    text-align: left;
+}
+#previewBox p {
+    text-align: left;
+    color: var(--text-grey);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+}
+#previewBox .contact-details {
+    display: none;
+}
+
+/* =========================================================
+   FULLSCREEN OVERLAY (CLICK)
+   ========================================================= */
+.fullscreen-overlay {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--bg-dark), #2d3238);
+    z-index: 2000;
+    display: none;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.fullscreen-overlay.show {
+    display: block;
+}
+.fullscreen-inner {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 40px 22px 60px;
+    text-align: left;
+}
+.fullscreen-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+.fullscreen-title {
+    margin: 0;
+    font-size: 34px;
+    font-weight: 600;
+    color: var(--accent-tomato);
+    text-shadow: 0 2px 10px rgba(255, 99, 71, 0.22);
+}
+
+.fullscreen-close {
+    background: transparent;
+    border: none;
+    padding: 0;
+    width: auto;
+    height: auto;
+    color: var(--text-light);
+    cursor: pointer;
+    font-size: 28px;
+    line-height: 1;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.fullscreen-close:hover {
+    transform: translateY(-1px);
+    opacity: 0.85;
+}
+
+.fullscreen-content {
+    color: var(--text-grey);
+    font-size: 16px;
+    line-height: 1.95;
+}
+.fullscreen-content p {
+    margin: 0;
+    white-space: normal;
+}
+.fullscreen-content .contact-details {
+    text-align: left;
+    margin-top: 18px;
+}
+@media (max-width: 768px) {
+    .fullscreen-title { font-size: 28px; }
+    .fullscreen-inner { padding-top: 28px; }
+}
+
 /* ---------- CARDS cu EFECTE HOVER ---------- */
 .cards {
     display: flex;
@@ -237,27 +334,6 @@ body {
 }
 .cookie-policy.show {
     display: block;
-    animation: slideUp 0.5s ease;
-}
-@keyframes slideUp {
-    from {
-        transform: translateY(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-@keyframes slideDown {
-    from {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    to {
-        transform: translateY(100%);
-        opacity: 0;
-    }
 }
 .cookie-content {
     max-width: 1200px;
@@ -277,12 +353,14 @@ body {
     color: var(--text-light);
     font-size: 18px;
     font-weight: 600;
+    text-align: left;
 }
 .cookie-text p {
     margin: 0;
     color: var(--text-grey);
     font-size: 14px;
     line-height: 1.6;
+    text-align: left;
 }
 .cookie-buttons {
     display: flex;
@@ -325,12 +403,42 @@ body {
     .cookie-buttons {
         justify-content: center;
     }
+    .cookie-text h3 {
+        text-align: center;
+    }
+}
+
+/* ---------- COOKIE ICON ---------- */
+.cookie-icon {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 1001;
+    display: none;
+    background: transparent;
+}
+.cookie-icon.show {
+    display: block;
+}
+@media (max-width: 768px) {
+    .cookie-icon {
+        bottom: 20px;
+        left: 20px;
+        font-size: 28px;
+    }
 }
 /* ---------- FOOTER ---------- */
 footer {
     margin-top: 60px;
     color: var(--text-grey);
     font-size: 14px;
+    text-align: center;
+}
+footer .brand {
+    color: #000;
+    font-weight: 700;
 }
 footer a {
     color: var(--accent-blue);
@@ -341,11 +449,19 @@ footer a {
 </head>
 <body>
 <div class="hero">
-    <h1>
-        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHFhNnoyMDhiNTdlNmY0OGM5MGpiMjcxb3Zsb3FsOWJhcHRnMjE2ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vFKqnCdLPNOKc/giphy.gif" alt="typing cat" class="typing-gif"><span id="welcome"></span><span class="cursor">|</span>
-    </h1>
+<h1 style="gap: 0 !important;">
+    <span id="welcome"></span><span class="cursor">|</span>
+    <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzRpZzBxOHdlYndjd3h5dWpvcHF0NGpwZ2Z4bnVhOW1qb3BzbG5vbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/QwytuIpLe6ECTghRpN/giphy.gif" 
+         alt="typing cat" 
+         style="width: 180px !important; height: auto !important; border-radius: 0 !important; box-shadow: none !important; object-fit: contain !important; display: inline-block !important; vertical-align: middle;">
+    
+    <span style="font-size: 8px !important; color: var(--text-grey); font-weight: 300; align-self: flex-end; margin-bottom: 12px; margin-left: -5px !important; white-space: nowrap;">
+        GIFs by @understudiohub
+    </span>
+</h1>
+</h1>
     <p class="subtitle">
-        Sunt <b>Andreja</b> si ajut proiectele sa&nbsp;functioneze bine, stabil si&nbsp;fara&nbsp;batai&nbsp;de&nbsp;cap.
+        Sunt <b>Andreja</b> si ajut proiectele sa functioneze bine, stabil si fara batai de cap.
     </p>
     <div class="buttons">
         <button class="btn" onmouseenter="show('about')" onmouseleave="hideAll()">Despre mine</button>
@@ -353,90 +469,245 @@ footer a {
         <button class="btn" onmouseenter="show('recommend')" onmouseleave="hideAll()">Ce ma recomanda</button>
         <button class="btn contact" onmouseenter="show('contact')" onmouseleave="hideAll()">Contact</button>
     </div>
+
+    <div id="previewBox" class="info"></div>
+
     <div id="about" class="info">
         <p>
-            Daca ai ajuns aici si te gandesti sa citesti acest profil, esti pe o cale gresita. Renunta in acest moment!<br>Daca tot ai ramas, e clar, astepti niste argumente.<br>Mi-am inceput pregatirea profesionala in Romania si am continuat-o in zona de suport tehnic, testare QA si operatiuni digitale. Am studiat o perioada arhitectura si artele plastice, unde am invatat disciplina, atentia la detalii si gandirea structurata, dar am realizat repede ca domeniul presupune compromisuri cu care nu am rezonat.<br>Imi place sa pun ordine in haos, sa inteleg sistemele si sa le fac sa functioneze. Nu promit minuni, dar livrez la timp si aduc claritate. In peste 7 ani de munca, am strans o serie de abilitati pe care le pot pune la treaba in folosul afacerii tale.
+            Daca ai ajuns aici si te gandesti sa citesti aceasta descriere, esti pe o cale gresita. Renunta in acest moment!<br>Daca tot ai ramas, e clar - astepti niste argumente.<br>Numele meu este Andreja Sanduleasa (Andre), dar online si la telefon ma gasesti adesea ca Andreea Sandu.<br>In mediul online exista sute de experti IT care promit orice. Este aproape imposibil sa nu nimeresti pe cineva. Sunt multi, dar si piata e mare. Eu nu fac parte din categoria asta. Nu am pretentia de expert si nici nu incerc sa te conving cu asta. Am cateva competente si le pun in practica de cate ori am ocazia, fara exagerari.<br>Mi-am inceput pregatirea profesionala in Romania si am continuat-o in zona de suport tehnic, testare web si operatiuni. Am studiat o perioada arhitectura si artele plastice, unde am invatat disciplina si atentia la detalii, dar am realizat repede ca domeniul presupune compromisuri cu care nu am rezonat.<br>De atunci am invatatat ca cele mai bune solutii sunt cele simple, ca documentatia clara salveaza ore de frustrare si ca prefer sa rezolv problema corect decat rapid dar superficial. Nu mut problema in alt loc - o rezolv acolo unde e.<br>Imi place sa inteleg contextul de lucru si sa explic solutiile clar, fara jargon, astfel incat echipa ta sa poata continua independent.<br>Nu promit minuni si nu astept sa-mi cada nimic din cer, dar livrez la timp, cu atentie la detalii si deschidere catre feedback.<br>Ce conteaza pentru mine, fara ocolisuri:<br>
+- Grija reciproca in relatia cu oamenii si companiile cu care lucrez<br>
+- Respectarea programului de lucru si a obligatiilor contractuale<br>
+- Comunicare clara, inteligenta si cu bun simt<br>
+- Sa scot in evidenta ce e mai bun din fiecare colaborare.<br>
+Lucrez independent, in colaborare cu echipe sau companii care au nevoie de suport tehnic, testare web si stabilizare operationala. Lucrez de la zero sau din mers, venind cu variante de imbunatatire sau automatizare a proceselor de lucru.<br>In peste 7 ani de munca, am strans o serie de abilitati pe care le pot pune la treaba pentru afacerea ta. Daca lucrezi intr-un mediu dinamic si ai nevoie de ordine fara haos, hai sa vorbim!
         </p>
     </div>
     <div id="skills" class="info">
         <p>
-            • Application & IT Support (ERP / CRM / CMS)<br>
-            • Manual QA Testing & Debugging (DevTools, Postman, BlueStacks)<br>
-            • SQL – interogari, user management<br>
-            • Ticketing systems (Jira, WHMCS, Zendesk)<br>
+            • Application & IT Support ERP/CRM/CMS (analiza, troubleshooting, documentare)<br>
+            • QA Testing & Debugging (testare functionala, regresie, API, Git, feedback catre dev)<br>
+            • Baze de date SQL Server/MySQL (creare, interogari, restaurare, proceduri stocate, functii, user management)<br>
+            • Ticketing systems (Jira, Confluence, WHMCS, Zendesk)<br>
             • Hosting & Email (cPanel, POP3 / IMAP / SMTP)<br>
-            • UX & design de baza (Figma, Photoshop)
+            • UX & design de baza (Figma, Photoshop)<br>
+            • Documentare si Organizare fluxuri<br>
+            • Comunicare cross-team<br>
+            • Training utilizatori<br>
         </p>
     </div>
     <div id="recommend" class="info">
         <p>
-            In relatia cu utilizatorii am grija sa explic clar, fara jargon, mereu orientata spre nevoile lor.
-            Experienta mi-a aratat ca oamenii apreciaza cel mai mult cand lucrurile
-            functioneaza simplu si logic. Cu fiecare colaborare, incerc sa aduc utilizatorul mai aproape de sistem si sistemul mai aproape de utilizator.<br>Scopul fiind o experienta reala de intelegere si utilizare.
+          De obicei, oamenii cu care lucrez nu vorbesc despre tehnologii sau tool-uri. Vorbesc despre cum se lucreaza. Sau, cum imi place mie sa zic: despre experienta aia premium de colaborare.<br>Apreciază ca indraznesc sa propun altceva cand lucrurile sunt blocate sau se fac „cum s-au facut intotdeauna". Nu vin cu idei de dragul schimbării – vin cu solutii testate, argumentate si potrivite contextului.<br>Apreciaza rabdarea. Mai ales cand e complicat, cand nu merge din prima si trebuie sa despici firul in patru.<br>Apreciaza ca rezist la presiune si ca ma adaptez rapid in medii dinamice, unde prioritatile se schimba peste noapte si trebuie sa fii pe faza, nu pe panica.<br>
+Pun accent pe claritate: in ce fac, in ce spun, in ce documentez. Explic solutiile astfel incat sa poata fi intelese si folosite mai departe – nu doar „rezolvate pe moment".<br>Si imi asum deciziile luate, rezultatele muncii mele. Bune sau mai putin bune.
         </p>
     </div>
     <div id="contact" class="info">
         <p>
-     Daca simti ca te pot ajuta si vrei sa povestim mai multe, foloseste adresa de email de mai jos si ne auzim curand.
+     Daca vrei sa lucram impreuna si sa povestim mai multe, foloseste adresa de email ori formularul de mai jos si ne auzim curand.
         </p>
         <div class="contact-details">
-            📍 Bucharest, Romania<br>
-            📧 salut.andreead@gmail.com<br> 
+            📧 salut.andreead@gmail.com<br>
+            
+            <div
+  style="
+    margin-top: 30px;
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    justify-content: left;
+    flex-wrap: wrap;
+  "
+>
+  <form
+  
+    name="contact"
+    method="POST"
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+    style="
+      flex: 1;
+      min-width: 280px;
+      max-width: 520px;
+      background: #1f2225;
+      padding: 26px;
+      border-radius: 14px;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.35);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    "
+>
+  <input type="hidden" name="form-name" value="contact">
+  <input type="hidden" name="bot-field">
+
+  <div>
+    <label style="font-size:14px; color:#f4f4f4;">Nume</label>
+    <input type="text" name="nume" required
+      style="
+        width:100%;
+        margin-top:6px;
+        padding:12px 14px;
+        border-radius:8px;
+        border:1px solid #444;
+        background:#26292e;
+        color:#f4f4f4;
+      ">
+  </div>
+
+  <div>
+    <label style="font-size:14px; color:#f4f4f4;">Email</label>
+    <input type="email" name="email" required
+      style="
+        width:100%;
+        margin-top:6px;
+        padding:12px 14px;
+        border-radius:8px;
+        border:1px solid #444;
+        background:#26292e;
+        color:#f4f4f4;
+      ">
+  </div>
+
+  <div>
+    <label style="font-size:14px; color:#f4f4f4;">Proiect</label>
+    <input type="text" name="proiect" required
+      style="
+        width:100%;
+        margin-top:6px;
+        padding:12px 14px;
+        border-radius:8px;
+        border:1px solid #444;
+        background:#26292e;
+        color:#f4f4f4;
+      ">
+  </div>
+
+  <div>
+    <label style="font-size:14px; color:#f4f4f4;">Buget estimat</label>
+    <select name="buget" required
+      style="
+        width:100%;
+        margin-top:6px;
+        padding:12px 14px;
+        border-radius:8px;
+        border:1px solid #444;
+        background:#26292e;
+        color:#f4f4f4;
+      ">
+      <option value="">Alege bugetul</option>
+      <option value="<500€">&lt; 500€</option>
+      <option value="500–1000€">500–1000€</option>
+      <option value="1000–3000€">1000–3000€</option>
+      <option value="3000€+">3000€+</option>
+    </select>
+  </div>
+
+  <div>
+    <label style="font-size:14px; color:#f4f4f4;">Mesaj</label>
+    <textarea name="mesaj" required
+      style="
+        width:100%;
+        margin-top:6px;
+        padding:12px 14px;
+        border-radius:8px;
+        border:1px solid #444;
+        background:#26292e;
+        color:#f4f4f4;
+        min-height:120px;
+        resize:vertical;
+      "></textarea>
+  </div>
+
+  <button type="submit"
+    style="
+      margin-top:10px;
+      padding:14px;
+      border:none;
+      border-radius:10px;
+      background:#3679ff;
+      color:#fff;
+      font-weight:600;
+      cursor:pointer;
+    ">
+    Trimite mesajul
+  </button>
+</form>
+   
+<img
+  src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWllem00ajV6MG0wZzJta3ljMG44cmhna3pwdXY5aXdpaDVkbG01YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/IfrzweBBzutrSi8qRv/giphy.gif"
+  alt="talking bird"
+  style="
+    width: 280px;
+    max-width: 100%;
+  "
+>   
         </div>
     </div>
 </div>
+
+
+        </div>
+    </div>
+</div>
+
 <div class="cards">
     <div class="card">
         <h2>IT & Application Support</h2>
         <ul>
-            <li>Suport tehnic remote</li>
-            <li>Administrare utilizatori & permisiuni</li>
-            <li>Troubleshooting aplicatii</li>
-            <li>Training si onboarding</li>
-            <li>Documentatie si ghiduri</li>
+            <li>Troubleshooting aplicatii web si mobile (erori, bug-uri, probleme de performanta)</li>
+            <li>Suport tehnic remote (asistenta la distanta, rezolvare fara deplasare)</li>
+            <li>Administrare baze de date (instalare, creare utilizatori, loguri, spatiu pe disc, backup & restore)</li>
+            <li>User management (conturi, autentificare, roluri)</li>
+            <li>Instruire si Training (clienti, angajati, echipe)</li>
+            <br>Ideal pentru: Startup-uri, echipe remote, companii in scalare.
         </ul>
     </div>
     <div class="card">
         <h2>Marketplace & Ops</h2>
         <ul>
-            <li>Administrare marketplace-uri</li>
-            <li>CRM / ERP / CMS</li>
-            <li>Procesare date</li>
-            <li>Rapoarte si optimizare</li>
+            <li>Administrare Marketplace-uri (listari produse, procesare imagini, gestionare comenzi, stocuri, facturare)</li>
+            <li>Management date in sisteme ERP/CRM (import/export fisiere bulk, sincronizare incasari banca, integrare curieri si marketplace-uri)</li>
+            <li>Raportare si optimizare procese (extragere date, rapoarte personalizate, suport procesare declaratii si documente contabile)</li>
+            <li>Integrari intre platforme prin API (sincronizare date)</li>
+            <br>Ideal pentru: eCommerce, afaceri cu volume mari de tranzactii si care vor sa-si optimizeze operatiunile, fara sa angajeze full-time.
         </ul>
     </div>
     <div class="card">
-        <h2>QA Manual</h2>
+        <h2>QA si Testare Software</h2>
         <ul>
-            <li>Testare functionala web & mobile</li>
-            <li>Identificare bug-uri</li>
-            <li>UI / UX checks</li>
-            <li>Documentare pasi & rapoarte</li>
+            <li>Testare Aplicatii mobile, Web si Site-uri </li>
+            <li>Testare functionala si non functionala (UI / UX)</li>
+            <li>Testare de regresie (la actualizari si noi feature-uri)</li>
+            <li>Monitorizare aplicatii (acces sisteme)</li>
+            <li>Testare Api-uri (verificare endpoint-uri, validare raspunsuri si performanta)</li>
+            <br>Ideal pentru: lansari de produse, aplicatii si site-uri noi, companii in crestere dar fara QA dedicat.
         </ul>
     </div>
 </div>
+
 <div class="experience">
     <h2>Am lucrat cu</h2>
     <div class="experience-wrapper">
         <ul>
-            <li>ERP / CRM (FGO; BT Go; Saga Software; Nexus; WindNET)</li>
-            <li>Microsoft SQL Server & administrare baze de date</li>
-            <li>Hosting & cPanel</li>
-            <li>Semnaturi electronice</li>
-            <li>Marketplace-uri eCommerce</li>
-            <li>Aplicatii SaaS B2B</li>
+            <li>Am lucrat in medii cu procese riguroase, sisteme critice si volum mare de utilizatori.</li>
+            <li>Companii SaaS (10-100 angajati)</li>
+            <li>ERP-uri complexe (multi-modul)</li>
+            <li>Startup-uri in faza de scalare</li>
+            <li>Furnizori de servicii digitale si hosting</li>
+            <li>Institutii financiare (banking & fintech)</li>
         </ul>
     </div>
 </div>
+
 <footer>
-    © 2026 Andreja Sanduleasa, toate drepturile rezervate. 
+    © 2026 <span class="brand">a[sand].ro</span><br>Toate drepturile rezervate.<br>📍RO / Bucuresti / Transilvania. 
 </footer>
 
 <div class="cookie-policy" id="cookiePolicy">
     <div class="cookie-content">
         <div class="cookie-text">
             <h3>🍪 Cookie Policy</h3>
-            <p>Acest site folosește cookie-uri pentru a-ți îmbunătăți experiența de navigare și pentru a analiza traficul. Continuând să navighezi pe acest site, ești de acord cu utilizarea cookie-urilor conform politicii noastre.</p>
+            <p>Acest site foloseste cookie-uri pentru a-ti asigura cea mai buna experienta de navigare si, optional, pentru analiza traficului.</p>
         </div>
         <div class="cookie-buttons">
             <button class="cookie-btn accept" onclick="acceptCookies()">Acceptă</button>
@@ -445,8 +716,22 @@ footer a {
     </div>
 </div>
 
+<div class="cookie-icon" id="cookieIcon" onclick="showCookiePolicy()">
+    🍪
+</div>
+
+<div class="fullscreen-overlay" id="fullscreenOverlay" aria-hidden="true">
+    <div class="fullscreen-inner" role="dialog" aria-modal="true" aria-labelledby="fullscreenTitle">
+        <div class="fullscreen-header">
+            <h2 class="fullscreen-title" id="fullscreenTitle"></h2>
+            <button class="fullscreen-close" id="fullscreenCloseBtn" type="button" aria-label="Închide">&times;</button>
+        </div>
+        <div class="fullscreen-content" id="fullscreenBody"></div>
+    </div>
+</div>
+
 <script>
-// Typing effect cu mai multe limbi - fara pauza
+// Typing effect
 const greetings = ["Bun venit!", "Hej!", "Welcome!"]; 
 const el = document.getElementById("welcome");
 let greetingIndex = 0;
@@ -455,73 +740,130 @@ let isDeleting = false;
 
 function typeWriter() {
     const currentGreeting = greetings[greetingIndex];
-    
     if (!isDeleting && charIndex < currentGreeting.length) {
-        // Scriem caracterele
         el.textContent += currentGreeting.charAt(charIndex);
         charIndex++;
-        setTimeout(typeWriter, 150); // Viteza de tastare
+        setTimeout(typeWriter, 150);
     } else if (!isDeleting && charIndex === currentGreeting.length) {
-        // Trecem direct la stergere, fara pauza
         isDeleting = true;
-        setTimeout(typeWriter, 800); // Pauza mica inainte de stergere
+        setTimeout(typeWriter, 800);
     } else if (isDeleting && charIndex > 0) {
-        // Stergem caracterele
         el.textContent = currentGreeting.substring(0, charIndex - 1);
         charIndex--;
-        setTimeout(typeWriter, 100); // Viteza de stergere
+        setTimeout(typeWriter, 100);
     } else if (isDeleting && charIndex === 0) {
-        // Trecem la urmatorul salut, fara pauza
         isDeleting = false;
         greetingIndex = (greetingIndex + 1) % greetings.length;
-        setTimeout(typeWriter, 300); // Pauza mica intre cuvinte
+        setTimeout(typeWriter, 300);
     }
 }
-
 typeWriter();
 
-// Afisare sectiuni la hover
 let hoverTimeout;
+const previewBox = document.getElementById('previewBox');
+
+function buildPreviewHtml(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (!section) return '';
+
+if (sectionId === 'contact') {
+    const p = section.querySelector('p');
+    return `<p>${p.innerText.trim()}..</p>`;
+}
+
+if (sectionId === 'recommend') {
+    const p = section.querySelector('p');
+    return `<p>${p.innerText.trim()}...</p>`;
+}
+
+    if (sectionId === 'about') {
+        const p = section.querySelector('p');
+        let text = p.innerHTML.trim();
+        text = text.replace('Renunta in acest moment!<br>Daca tot ai ramas', 'Renunta in acest moment! Daca tot ai ramas');
+        return `<p>${text}</p>`;
+    }
+
+    const p = section.querySelector('p');
+    return `<p>${p.innerHTML.trim()}</p>`;
+}
+
 function show(id) {
     clearTimeout(hoverTimeout);
-    document.querySelectorAll('.info').forEach(el => {
-        el.style.display = 'none';
-    });
-    document.getElementById(id).style.display = 'block';
+    document.querySelectorAll('.info').forEach(el => el.style.display = 'none');
+    previewBox.innerHTML = buildPreviewHtml(id);
+    previewBox.style.display = 'block';
 }
 
 function hideAll() {
     hoverTimeout = setTimeout(() => {
-        document.querySelectorAll('.info').forEach(el => {
-            el.style.display = 'none';
-        });
+        document.querySelectorAll('.info').forEach(el => el.style.display = 'none');
     }, 200);
 }
 
-// Cookie policy
+const overlay = document.getElementById('fullscreenOverlay');
+const overlayTitle = document.getElementById('fullscreenTitle');
+const overlayBody = document.getElementById('fullscreenBody');
+const closeBtn = document.getElementById('fullscreenCloseBtn');
+
+function openFullscreen(sectionId, titleText) {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+    document.querySelectorAll('.info').forEach(el => el.style.display = 'none');
+    overlayTitle.textContent = titleText;
+    overlayBody.innerHTML = section.innerHTML;
+    overlay.classList.add('show');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeFullscreen() {
+    overlay.classList.remove('show');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+}
+
+closeBtn.addEventListener('click', closeFullscreen);
+overlay.addEventListener('click', (e) => { if (e.target === overlay) closeFullscreen(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeFullscreen(); });
+
+const buttonToSectionMap = {
+    'Despre mine': 'about',
+    'Abilitati': 'skills',
+    'Ce ma recomanda': 'recommend',
+    'Contact': 'contact'
+};
+
+document.querySelectorAll('.buttons .btn').forEach(btn => {
+    const label = btn.innerText.trim();
+    const sectionId = buttonToSectionMap[label];
+    if (sectionId) btn.addEventListener('click', () => openFullscreen(sectionId, label));
+});
+
 window.addEventListener('load', () => {
-    const cookieChoice = localStorage.getItem('cookieChoice');
-    if (!cookieChoice) {
-        document.getElementById('cookiePolicy').classList.add('show');
-    }
+    if (!localStorage.getItem('cookieChoice')) document.getElementById('cookiePolicy').classList.add('show');
+    else document.getElementById('cookieIcon').classList.add('show');
 });
 
 function acceptCookies() {
     localStorage.setItem('cookieChoice', 'accepted');
-    document.getElementById('cookiePolicy').style.animation = 'slideDown 0.5s ease';
-    setTimeout(() => {
-        document.getElementById('cookiePolicy').style.display = 'none';
-    }, 500);
+    document.getElementById('cookiePolicy').classList.remove('show');
+    document.getElementById('cookieIcon').classList.add('show');
 }
 
 function declineCookies() {
     localStorage.setItem('cookieChoice', 'declined');
-    document.getElementById('cookiePolicy').style.animation = 'slideDown 0.5s ease';
-    setTimeout(() => {
-        document.getElementById('cookiePolicy').style.display = 'none';
-    }, 500);
+    document.getElementById('cookiePolicy').classList.
+    remove('show');
+document.getElementById('cookieIcon').classList.add('show');
 }
-
+function showCookiePolicy() {
+document.getElementById('cookieIcon').classList.remove('show');
+document.getElementById('cookiePolicy').classList.add('show');
+}
 </script>
 </body>
 </html>
+
+
+
+
