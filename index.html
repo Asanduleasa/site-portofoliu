@@ -9,19 +9,25 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --black: #111010;
-    --ember: #ff4a1c;
-    --ash:   #2a2725;
-    --smoke: #5a5350;
-    --cream: #f0ece4;
-    --dim:   #8a837c;
+    --black: #0a0a0a;
+    --red:   #cc1100;
+    --dark:  #151515;
+    --mid:   #3a3a3a;
+    --light: #e0e0e0;
+    --dim:   #777;
   }
 
-  html, body {
-    height: 100%;
+  html {
+    height: auto;
     background: var(--black);
-    color: var(--cream);
-    overflow: hidden;
+  }
+
+  body {
+    min-height: 100vh;
+    background: var(--black);
+    color: var(--light);
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   body::before {
@@ -32,15 +38,16 @@
     background-size: 200px 200px;
     pointer-events: none;
     z-index: 10;
-    opacity: 0.55;
+    opacity: 0.3;
   }
 
   .hot-line {
     position: fixed;
     top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--ember), transparent);
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--red), transparent);
     animation: scan 4s ease-in-out infinite;
+    z-index: 20;
   }
   @keyframes scan {
     0%   { transform: scaleX(0); transform-origin: left; opacity: 0; }
@@ -54,8 +61,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    height: 100vh;
-    padding: 80px 10vw 60px;
+    min-height: 100vh;
+    padding: 100px 10vw 80px;
     position: relative;
   }
 
@@ -65,12 +72,12 @@
     top: 50%;
     transform: translateY(-50%);
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(180px, 28vw, 380px);
-    color: var(--ash);
+    font-size: clamp(100px, 18vw, 220px);
+    color: var(--dark);
     line-height: 1;
     user-select: none;
     pointer-events: none;
-    letter-spacing: -4px;
+    letter-spacing: -2px;
     opacity: 0;
     animation: fadeUp 1s 0.2s forwards;
   }
@@ -81,7 +88,7 @@
     font-weight: 700;
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: var(--ember);
+    color: var(--red);
     margin-bottom: 18px;
     opacity: 0;
     animation: fadeUp 0.7s 0.5s forwards;
@@ -89,10 +96,10 @@
 
   h1 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(52px, 7.5vw, 110px);
+    font-size: clamp(48px, 7vw, 100px);
     line-height: 0.92;
     letter-spacing: 0.01em;
-    color: var(--cream);
+    color: var(--light);
     margin-bottom: 28px;
     opacity: 0;
     animation: fadeUp 0.7s 0.75s forwards;
@@ -100,16 +107,16 @@
 
   h1 em {
     font-style: italic;
-    color: var(--ember);
+    color: var(--red);
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 700;
-    font-size: clamp(42px, 6.5vw, 90px);
+    font-size: clamp(38px, 6vw, 82px);
   }
 
   .rule {
-    width: 60px;
+    width: 50px;
     height: 2px;
-    background: var(--ember);
+    background: var(--red);
     margin-bottom: 22px;
     opacity: 0;
     animation: fadeUp 0.6s 1.05s forwards;
@@ -117,19 +124,19 @@
 
   .subtext {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: clamp(15px, 1.8vw, 20px);
+    font-size: clamp(15px, 1.6vw, 19px);
     font-weight: 400;
     font-style: italic;
     color: var(--dim);
     line-height: 1.55;
-    max-width: 540px;
+    max-width: 520px;
     margin-bottom: 32px;
     opacity: 0;
     animation: fadeUp 0.7s 1.2s forwards;
   }
 
   .subtext strong {
-    color: var(--cream);
+    color: var(--light);
     font-style: normal;
     font-weight: 700;
   }
@@ -143,45 +150,46 @@
   }
 
   .email-dot {
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
-    background: var(--ember);
+    background: var(--red);
     flex-shrink: 0;
-    animation: pulse 1.8s ease-in-out infinite;
+    animation: pulse 2s ease-in-out infinite;
   }
 
   @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(255,74,28,0.7); }
-    50%       { box-shadow: 0 0 0 10px rgba(255,74,28,0); }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(204,17,0,0.6); }
+    50%       { box-shadow: 0 0 0 8px rgba(204,17,0,0); }
   }
 
   .email-addr {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: clamp(15px, 1.8vw, 20px);
+    font-size: clamp(15px, 1.6vw, 19px);
     font-weight: 700;
     letter-spacing: 0.05em;
-    color: var(--cream);
+    color: var(--light);
     text-decoration: none;
-    border-bottom: 1px solid var(--smoke);
+    border-bottom: 1px solid var(--mid);
     padding-bottom: 2px;
     transition: color 0.2s, border-color 0.2s;
   }
 
   .email-addr:hover {
-    color: var(--ember);
-    border-color: var(--ember);
+    color: var(--red);
+    border-color: var(--red);
   }
 
   .brand {
-    position: fixed;
-    bottom: 32px;
-    left: 10vw;
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin-top: 120px;
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 12px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--smoke);
+    color: var(--mid);
     opacity: 0;
     animation: fadeUp 0.6s 1.8s forwards;
   }
@@ -194,7 +202,7 @@
   @media (max-width: 600px) {
     .stage { padding: 60px 7vw 60px; }
     .bg-number { display: none; }
-    h1 { font-size: clamp(52px, 16vw, 80px); }
+    h1 { font-size: clamp(48px, 14vw, 72px); }
   }
 </style>
 </head>
@@ -206,7 +214,7 @@
 
   <div class="bg-number" aria-hidden="true">2026</div>
 
-  <p class="eyebrow">asand.ro &nbsp;/&nbsp; status: în pregătire</p>
+  <p class="eyebrow">asand.ro &nbsp;/&nbsp; status: în lucru</p>
 
   <h1>
     Nimic<br>
@@ -229,9 +237,9 @@
     <a class="email-addr" href="mailto:salut.andreead@gmail.com">salut.andreead@gmail.com</a>
   </div>
 
-</div>
+  <p class="brand">&#169; 2026 a[sand].ro &nbsp;&#8212;&nbsp; București</p>
 
-<p class="brand">&#169; 2026 a[sand].ro &nbsp;&#8212;&nbsp; București</p>
+</div>
 
 </body>
 </html>
