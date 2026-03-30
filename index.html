@@ -2,868 +2,245 @@
 <html lang="ro">
 <head>
 <meta charset="UTF-8">
-<title>🦅Consultant IT / Fauritor de bine: asand.ro</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>asand.ro — coming soon</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,700;1,400;1,700&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
 <style>
-:root {
-    --bg-dark: #222528;
-    --accent-blue: #3679ff;
-    --accent-green: #2ecc71;
-    --card-bg: #333333;
-    --text-light: #f4f4f4;
-    --text-grey: #9a9a9a;
-    --accent-tomato: #ff6347;
-}
-* {
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-}
-body {
-    margin: 0;
-    padding: 40px 20px;
-    min-height: 100vh;
-    background: linear-gradient(135deg, var(--bg-dark), #2d3238);
-    color: var(--text-light);
-    text-align: center;
-}
-/* ---------- HERO ---------- */
-.hero {
-    max-width: 900px;
-    margin: 0 auto 50px;
-}
-.hero h1 {
-    font-size: 46px;
-    color: var(--accent-tomato);
-    margin-bottom: 10px;
-    text-shadow: 0 2px 10px rgba(255, 99, 71, 0.3);
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-}
-.typing-gif {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-.cursor {
-    display: inline-block;
-    color: var(--accent-tomato);
-    animation: blink 0.8s infinite;
-    margin-left: 2px;
-}
-@keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
-}
-.subtitle {
-    color: var(--text-grey);
-    font-size: 18px;
-    line-height: 1.6;
-    margin: 0 auto 30px;
-    white-space: nowrap;
-}
-/* ---------- BUTTONS cu RIPPLE EFFECT ---------- */
-.buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-}
-.btn {
-    padding: 13px 28px;
-    border-radius: 25px;
-    border: none;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: 500;
-    color: #fff;
-    background: linear-gradient(135deg, #64625f, #4a4846);
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    position: relative;
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black:   #111010;
+    --ember:   #ff4a1c;
+    --ash:     #2a2725;
+    --smoke:   #5a5350;
+    --cream:   #f0ece4;
+    --dim:     #8a837c;
+  }
+
+  html, body {
+    height: 100%;
+    background: var(--black);
+    color: var(--cream);
     overflow: hidden;
-}
-.btn::before {
+  }
+
+  /* ── NOISE GRAIN OVERLAY ── */
+  body::before {
     content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-}
-.btn:hover::before {
-    width: 300px;
-    height: 300px;
-}
-.btn:hover {
-    background: linear-gradient(135deg, var(--accent-blue), #2d5fd9);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(54, 121, 255, 0.4);
-}
-.btn.contact {
-    background: linear-gradient(135deg, var(--accent-green), #27ae60);
-    box-shadow: 0 4px 20px rgba(46, 204, 113, 0.4);
-}
-.btn.contact:hover {
-    background: linear-gradient(135deg, #27ae60, #229954);
-    box-shadow: 0 6px 25px rgba(46, 204, 113, 0.6);
-}
-
-/* ---------- INFO SECTIONS ---------- */
-.info {
-    display: none;
-    max-width: 800px;
-    margin: 30px auto;
-    text-align: center;
-    animation: fadeIn 0.3s ease;
-}
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-.info p {
-    color: var(--text-grey);
-    line-height: 1.8;
-    font-size: 16px;
-}
-#skills p {
-    text-align: center;
-}
-#contact .contact-details {
-    text-align: center;
-    margin-top: 15px;
-    color: var(--text-grey);
-}
-
-/* =========================================================
-   PREVIEW BOX (HOVER) – Limitare la 3 rânduri
-   ========================================================= */
-#previewBox {
-    text-align: left;
-}
-#previewBox p {
-    text-align: left;
-    color: var(--text-grey);
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin: 0;
-}
-#previewBox .contact-details {
-    display: none;
-}
-
-/* =========================================================
-   FULLSCREEN OVERLAY (CLICK)
-   ========================================================= */
-.fullscreen-overlay {
     position: fixed;
     inset: 0;
-    width: 100vw;
-    height: 100vh;
-    background: linear-gradient(135deg, var(--bg-dark), #2d3238);
-    z-index: 2000;
-    display: none;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-}
-.fullscreen-overlay.show {
-    display: block;
-}
-.fullscreen-inner {
-    max-width: 980px;
-    margin: 0 auto;
-    padding: 40px 22px 60px;
-    text-align: left;
-}
-.fullscreen-header {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0.55;
+  }
+
+  /* ── HOT LINE top ── */
+  .hot-line {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--ember), transparent);
+    animation: scan 4s ease-in-out infinite;
+  }
+  @keyframes scan {
+    0%   { transform: scaleX(0); transform-origin: left; opacity: 0; }
+    30%  { transform: scaleX(1); transform-origin: left; opacity: 1; }
+    70%  { transform: scaleX(1); transform-origin: right; opacity: 1; }
+    100% { transform: scaleX(0); transform-origin: right; opacity: 0; }
+  }
+
+  /* ── LAYOUT ── */
+  .stage {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    margin-bottom: 18px;
-    padding-bottom: 18px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
-}
-.fullscreen-title {
-    margin: 0;
-    font-size: 34px;
-    font-weight: 600;
-    color: var(--accent-tomato);
-    text-shadow: 0 2px 10px rgba(255, 99, 71, 0.22);
-}
-
-.fullscreen-close {
-    background: transparent;
-    border: none;
-    padding: 0;
-    width: auto;
-    height: auto;
-    color: var(--text-light);
-    cursor: pointer;
-    font-size: 28px;
-    line-height: 1;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-}
-.fullscreen-close:hover {
-    transform: translateY(-1px);
-    opacity: 0.85;
-}
-
-.fullscreen-content {
-    color: var(--text-grey);
-    font-size: 16px;
-    line-height: 1.95;
-}
-.fullscreen-content p {
-    margin: 0;
-    white-space: normal;
-}
-.fullscreen-content .contact-details {
-    text-align: left;
-    margin-top: 18px;
-}
-@media (max-width: 768px) {
-    .fullscreen-title { font-size: 28px; }
-    .fullscreen-inner { padding-top: 28px; }
-}
-
-/* ---------- CARDS cu EFECTE HOVER ---------- */
-.cards {
-    display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
-    gap: 25px;
-    max-width: 1400px;
-    margin: 60px auto;
-}
-.card {
-    width: 320px;
-    background: linear-gradient(135deg, var(--card-bg), #2a2a2a);
-    padding: 30px;
-    border-radius: 15px;
-    text-align: left;
-    border-top: 5px solid var(--accent-blue);
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    align-items: flex-start;
+    height: 100vh;
+    padding: 0 10vw;
     position: relative;
-    overflow: hidden;
-}
-.card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(54, 121, 255, 0.1) 0%, transparent 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(54, 121, 255, 0.4);
-}
-.card:hover::before {
-    opacity: 1;
-}
-.card h2 {
-    color: var(--accent-blue);
-    text-align: center;
-    margin-top: 0;
-    font-weight: 600;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-.card ul {
-    padding-left: 18px;
-    line-height: 1.8;
-}
-.card li {
-    margin-bottom: 10px;
-}
-/* ---------- EXPERIENCE ---------- */
-.experience {
-    max-width: 900px;
-    margin: 0 auto 60px;
-    text-align: center;
-}
-.experience h2 {
-    color: var(--accent-blue);
-    text-align: center;
-}
-.experience ul {
-    columns: 2;
-    column-gap: 280px;
-    color: var(--text-grey);
-    list-style-position: outside;
-    padding-left: 20px;
-    display: inline-block;
-    text-align: left;
-}
-.experience-wrapper {
-    text-align: center;
-}
-@media (max-width: 768px) {
-    .experience ul {
-        columns: 1;
-    }
-}
-/* ---------- COOKIE POLICY ---------- */
-.cookie-policy {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(135deg, #2a2d31, #1f2225);
-    backdrop-filter: blur(10px);
-    padding: 25px 30px;
-    box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    border-top: 2px solid var(--accent-blue);
-    display: none;
-}
-.cookie-policy.show {
-    display: block;
-}
-.cookie-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-.cookie-text {
-    flex: 1;
-    min-width: 300px;
-}
-.cookie-text h3 {
-    margin: 0 0 10px 0;
-    color: var(--text-light);
-    font-size: 18px;
-    font-weight: 600;
-    text-align: left;
-}
-.cookie-text p {
-    margin: 0;
-    color: var(--text-grey);
-    font-size: 14px;
-    line-height: 1.6;
-    text-align: left;
-}
-.cookie-buttons {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-.cookie-btn {
-    padding: 12px 30px;
-    border-radius: 25px;
-    border: none;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-.cookie-btn.accept {
-    background: linear-gradient(135deg, var(--accent-green), #27ae60);
-    color: #fff;
-}
-.cookie-btn.accept:hover {
-    background: linear-gradient(135deg, #27ae60, #229954);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(46, 204, 113, 0.5);
-}
-.cookie-btn.decline {
-    background: linear-gradient(135deg, #e74c3c, #c0392b);
-    color: #fff;
-}
-.cookie-btn.decline:hover {
-    background: linear-gradient(135deg, #c0392b, #a93226);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.5);
-}
-@media (max-width: 768px) {
-    .cookie-content {
-        flex-direction: column;
-        text-align: center;
-    }
-    .cookie-buttons {
-        justify-content: center;
-    }
-    .cookie-text h3 {
-        text-align: center;
-    }
-}
+  }
 
-/* ---------- COOKIE ICON ---------- */
-.cookie-icon {
-    position: fixed;
-    bottom: 30px;
-    left: 30px;
-    font-size: 32px;
-    cursor: pointer;
-    z-index: 1001;
-    display: none;
-    background: transparent;
-}
-.cookie-icon.show {
-    display: block;
-}
-@media (max-width: 768px) {
-    .cookie-icon {
-        bottom: 20px;
-        left: 20px;
-        font-size: 28px;
-    }
-}
-/* ---------- FOOTER ---------- */
-footer {
-    margin-top: 60px;
-    color: var(--text-grey);
-    font-size: 14px;
-    text-align: center;
-}
-footer .brand {
-    color: #000;
+  /* ── BIG NUMBER background ── */
+  .bg-number {
+    position: absolute;
+    right: 6vw;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(180px, 28vw, 380px);
+    color: var(--ash);
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+    letter-spacing: -4px;
+    opacity: 0;
+    animation: fadeUp 1s 0.2s forwards;
+  }
+
+  /* ── EYEBROW ── */
+  .eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(11px, 1.1vw, 14px);
     font-weight: 700;
-}
-footer a {
-    color: var(--accent-blue);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--ember);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.5s forwards;
+  }
+
+  /* ── HEADLINE ── */
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 10vw, 148px);
+    line-height: 0.9;
+    letter-spacing: 0.01em;
+    color: var(--cream);
+    margin-bottom: 42px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.75s forwards;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--ember);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: clamp(52px, 8vw, 118px);
+  }
+
+  /* ── DIVIDER ── */
+  .rule {
+    width: 60px;
+    height: 2px;
+    background: var(--ember);
+    margin-bottom: 36px;
+    opacity: 0;
+    animation: fadeUp 0.6s 1.05s forwards;
+  }
+
+  /* ── SUBTEXT ── */
+  .subtext {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(16px, 2.2vw, 24px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--dim);
+    line-height: 1.5;
+    max-width: 540px;
+    margin-bottom: 52px;
+    opacity: 0;
+    animation: fadeUp 0.7s 1.2s forwards;
+  }
+
+  .subtext strong {
+    color: var(--cream);
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  /* ── EMAIL ── */
+  .email-line {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    opacity: 0;
+    animation: fadeUp 0.7s 1.5s forwards;
+  }
+
+  .email-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--ember);
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255,74,28,0.7); }
+    50%       { box-shadow: 0 0 0 10px rgba(255,74,28,0); }
+  }
+
+  .email-addr {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(15px, 1.8vw, 20px);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--cream);
     text-decoration: none;
-    margin: 0 10px;
-}
+    border-bottom: 1px solid var(--smoke);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .email-addr:hover {
+    color: var(--ember);
+    border-color: var(--ember);
+  }
+
+  /* ── CORNER BRAND ── */
+  .brand {
+    position: fixed;
+    bottom: 32px;
+    left: 10vw;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--smoke);
+    opacity: 0;
+    animation: fadeUp 0.6s 1.8s forwards;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .stage { padding: 0 7vw; justify-content: flex-end; padding-bottom: 14vh; }
+    .bg-number { display: none; }
+    h1 { font-size: clamp(60px, 18vw, 90px); }
+  }
 </style>
 </head>
 <body>
-<div class="hero">
-<h1 style="gap: 0 !important;">
-    <span id="welcome"></span><span class="cursor">|</span>
-    <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzRpZzBxOHdlYndjd3h5dWpvcHF0NGpwZ2Z4bnVhOW1qb3BzbG5vbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/QwytuIpLe6ECTghRpN/giphy.gif" 
-         alt="typing cat" 
-         style="width: 180px !important; height: auto !important; border-radius: 0 !important; box-shadow: none !important; object-fit: contain !important; display: inline-block !important; vertical-align: middle;">
-    
-    <span style="font-size: 8px !important; color: var(--text-grey); font-weight: 300; align-self: flex-end; margin-bottom: 12px; margin-left: -5px !important; white-space: nowrap;">
-        GIFs by @understudiohub
-    </span>
-</h1>
-</h1>
-    <p class="subtitle">
-        Sunt <b>Andreja</b> si ajut proiectele sa functioneze bine, stabil si fara batai de cap.
-    </p>
-    <div class="buttons">
-        <button class="btn" onmouseenter="show('about')" onmouseleave="hideAll()">Despre mine</button>
-        <button class="btn" onmouseenter="show('skills')" onmouseleave="hideAll()">Abilitati</button>
-        <button class="btn" onmouseenter="show('recommend')" onmouseleave="hideAll()">Ce ma recomanda</button>
-        <button class="btn contact" onmouseenter="show('contact')" onmouseleave="hideAll()">Contact</button>
-    </div>
 
-    <div id="previewBox" class="info"></div>
+<div class="hot-line"></div>
 
-    <div id="about" class="info">
-        <p>
-            Daca ai ajuns aici si te gandesti sa citesti aceasta descriere, esti pe o cale gresita. Renunta in acest moment!<br>Daca tot ai ramas, e clar - astepti niste argumente.<br>Numele meu este Andreja Sănduleasa (Andre), dar online si la telefon ma gasesti adesea ca Andreea Sandu.<br>In mediul online exista sute de experti IT care promit orice. Este aproape imposibil sa nu nimeresti pe cineva. Sunt multi, dar si piata e mare. Eu nu fac parte din categoria asta. Nu am pretentia de expert si nici nu incerc sa te conving cu asta. Am cateva priceperi si le pun la treaba ori de cate ori-i nevoie, fara taraboi.<br>Mi-am inceput pregatirea profesionala in Romania si am continuat-o in zona de suport tehnic, testare web si operatiuni. Am studiat o perioada arhitectura si artele plastice, unde am invatat disciplina si atentia la detalii, dar am realizat repede ca domeniul presupune compromisuri cu care nu am rezonat.<br>De atunci am invatat ca cele mai bune solutii-s alea simple, ca documentatia clara salveaza timp si ca-i mai bine sa rezolvi problema cum trebuie decat de mantuiala.<br>Imi place sa inteleg bine contextul de lucru si sa explic solutiile clar, fara jargon, astfel incat echipa ta sa se descurce si singura mai departe.<br>Nu promit minuni si nu astept sa-mi pice nimic din cer, dar livrez la timp, cu atentie la detalii si deschidere catre feedback.<br>Ce conteaza pentru mine, fara ocolisuri:<br>
-- Grija reciproca in relatia cu oamenii si companiile cu care lucrez.<br>
-- Respectarea programului de lucru si a obligatiilor contractuale.<br>
-- Comunicare clara, inteligenta si cu bun simt.<br>
-- Sa scot in evidenta ce e mai bun din fiecare colaborare.<br>
-Lucrez independent, in colaborare cu echipe sau companii care au nevoie de suport tehnic, testare web si stabilizare operationala. Lucrez de la zero sau din mers, venind cu variante de imbunatatire sau automatizare a proceselor de lucru.<br>In peste 7 ani de munca, am strans o serie de abilitati, bune de pus la lucru pentru afacerea ta. Daca lucrezi intr-un mediu dinamic si-ti trebuie randuiala, noh, hai sa vorbim!
-        </p>
-    </div>
-    <div id="skills" class="info">
-        <p>
-            • Application & IT Support ERP/CRM/CMS (analiza, troubleshooting, documentare)<br>
-            • QA Testing & Debugging (testare functionala, regresie, API, Git, feedback catre dev)<br>
-            • Baze de date SQL Server/MySQL (creare, interogari, restaurare, proceduri stocate, functii, user management)<br>
-            • Ticketing systems (Jira, Confluence, WHMCS, Zendesk)<br>
-            • Hosting & Email (cPanel, POP3 / IMAP / SMTP)<br>
-            • UX & design de baza (Figma, Photoshop)<br>
-            • Documentare si Organizare fluxuri<br>
-            • Comunicare cross-team<br>
-            • Training utilizatori<br>
-        </p>
-    </div>
-    <div id="recommend" class="info">
-        <p>
-          De obicei, oamenii cu care lucrez nu stau la povesti despre tehnologii sau tool-uri, ci de cum se lucreaza. Sau, cum imi place mie sa zic: despre experienta aia premium de colaborare.<br>Apreciaza ca indraznesc sa propun altceva cand lucrurile sunt blocate sau se fac „cum s-au facut intotdeauna". Nu vin cu idei de dragul schimbării – vin cu solutii testate, argumentate si potrivite contextului.<br>Apreciaza rabdarea. Mai ales cand e complicat, cand nu merge din prima si trebuie sa despici firul in patru.<br>Apreciaza ca rezist la presiune si ca ma adaptez rapid in medii dinamice, unde prioritatile se schimba peste noapte si trebuie sa fii pe faza, nu pe panica.<br>
-Pun accent pe claritate: in ce fac, in ce spun, in ce documentez. Explic solutiile astfel incat sa poata fi intelese si folosite mai departe – nu doar „rezolvate pe moment".<br>Si imi asum deciziile luate, rezultatele muncii mele. Bune sau mai putin bune.
-        </p>
-    </div>
-    <div id="contact" class="info">
-        <p>
-     Yoi, daca vrei sa lucram impreuna si sa mai povestim, foloseste adresa de email ori formularul de mai jos si ne auzim curand.
-        </p>
-        <div class="contact-details">
-            📧 salut.andreead@gmail.com<br>
-            
-            <div
-  style="
-    margin-top: 30px;
-    display: flex;
-    gap: 30px;
-    align-items: flex-start;
-    justify-content: left;
-    flex-wrap: wrap;
-  "
->
-  <form
-  
-    name="contact"
-    method="POST"
-    data-netlify="true"
-    netlify-honeypot="bot-field"
-    style="
-      flex: 1;
-      min-width: 280px;
-      max-width: 520px;
-      background: #1f2225;
-      padding: 26px;
-      border-radius: 14px;
-      box-shadow: 0 6px 30px rgba(0,0,0,0.35);
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    "
->
-  <input type="hidden" name="form-name" value="contact">
-  <input type="hidden" name="bot-field">
+<div class="stage">
 
-  <div>
-    <label style="font-size:14px; color:#f4f4f4;">Nume</label>
-    <input type="text" name="nume" required
-      style="
-        width:100%;
-        margin-top:6px;
-        padding:12px 14px;
-        border-radius:8px;
-        border:1px solid #444;
-        background:#26292e;
-        color:#f4f4f4;
-      ">
+  <div class="bg-number" aria-hidden="true">2026</div>
+
+  <p class="eyebrow">asand.ro &nbsp;/&nbsp; status: în pregătire</p>
+
+  <h1>
+    Nimic<br>
+    de văzut<br>
+    <em>aici.</em><br>
+    Deocamdată.
+  </h1>
+
+  <div class="rule"></div>
+
+  <p class="subtext">
+    Nu e gata. Nu e pentru toată lumea.<br>
+    Când va fi, va fi <strong>corect făcut</strong> — nu rapid, nu de dragul bifei.<br>
+    Până atunci, dacă știi ce vrei și ești serios —
+    <strong>scrie-mi.</strong>
+  </p>
+
+  <div class="email-line">
+    <span class="email-dot" aria-hidden="true"></span>
+    <a class="email-addr" href="mailto:salut.andreead@gmail.com">salut.andreead@gmail.com</a>
   </div>
 
-  <div>
-    <label style="font-size:14px; color:#f4f4f4;">Email</label>
-    <input type="email" name="email" required
-      style="
-        width:100%;
-        margin-top:6px;
-        padding:12px 14px;
-        border-radius:8px;
-        border:1px solid #444;
-        background:#26292e;
-        color:#f4f4f4;
-      ">
-  </div>
-
-  <div>
-    <label style="font-size:14px; color:#f4f4f4;">Proiect</label>
-    <input type="text" name="proiect" required
-      style="
-        width:100%;
-        margin-top:6px;
-        padding:12px 14px;
-        border-radius:8px;
-        border:1px solid #444;
-        background:#26292e;
-        color:#f4f4f4;
-      ">
-  </div>
-
-  <div>
-    <label style="font-size:14px; color:#f4f4f4;">Buget estimat</label>
-    <select name="buget" required
-      style="
-        width:100%;
-        margin-top:6px;
-        padding:12px 14px;
-        border-radius:8px;
-        border:1px solid #444;
-        background:#26292e;
-        color:#f4f4f4;
-      ">
-      <option value="">Alege bugetul</option>
-      <option value="<500€">&lt; 500€</option>
-      <option value="500–1000€">500–1000€</option>
-      <option value="1000–3000€">1000–3000€</option>
-      <option value="3000€+">3000€+</option>
-    </select>
-  </div>
-
-  <div>
-    <label style="font-size:14px; color:#f4f4f4;">Mesaj</label>
-    <textarea name="mesaj" required
-      style="
-        width:100%;
-        margin-top:6px;
-        padding:12px 14px;
-        border-radius:8px;
-        border:1px solid #444;
-        background:#26292e;
-        color:#f4f4f4;
-        min-height:120px;
-        resize:vertical;
-      "></textarea>
-  </div>
-
-  <button type="submit"
-    style="
-      margin-top:10px;
-      padding:14px;
-      border:none;
-      border-radius:10px;
-      background:#3679ff;
-      color:#fff;
-      font-weight:600;
-      cursor:pointer;
-    ">
-    Trimite mesajul
-  </button>
-</form>
-   
-<img
-  src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWllem00ajV6MG0wZzJta3ljMG44cmhna3pwdXY5aXdpaDVkbG01YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/IfrzweBBzutrSi8qRv/giphy.gif"
-  alt="talking bird"
-  style="
-    width: 280px;
-    max-width: 100%;
-  "
->   
-        </div>
-    </div>
 </div>
 
+<p class="brand">© 2026 a[sand].ro &nbsp;— &nbsp;București</p>
 
-        </div>
-    </div>
-</div>
-
-<div class="cards">
-    <div class="card">
-        <h2>IT & Application Support</h2>
-        <ul>
-            <li>Troubleshooting aplicatii web si mobile (erori, bug-uri, probleme de performanta)</li>
-            <li>Suport tehnic remote (asistenta la distanta, rezolvare fara deplasare)</li>
-            <li>Administrare baze de date (instalare, creare utilizatori, loguri, spatiu pe disc, backup & restore)</li>
-            <li>User management (conturi, autentificare, roluri)</li>
-            <li>Instruire si Training (clienti, angajati, echipe)</li>
-            <br>Ideal pentru: Startup-uri, echipe remote, companii in scalare.
-        </ul>
-    </div>
-    <div class="card">
-        <h2>Marketplace & Ops</h2>
-        <ul>
-            <li>Administrare Marketplace-uri (listari produse, procesare imagini, gestionare comenzi, stocuri, facturare)</li>
-            <li>Management date in sisteme ERP/CRM (import/export fisiere bulk, sincronizare incasari banca, integrare curieri si marketplace-uri)</li>
-            <li>Raportare si optimizare procese (extragere date, rapoarte personalizate, suport procesare declaratii si documente contabile)</li>
-            <li>Integrari intre platforme prin API (sincronizare date)</li>
-            <br>Ideal pentru: eCommerce, afaceri cu volume mari de tranzactii si care vor sa-si optimizeze operatiunile, fara sa angajeze full-time.
-        </ul>
-    </div>
-    <div class="card">
-        <h2>QA si Testare Software</h2>
-        <ul>
-            <li>Testare Aplicatii mobile, Web si Site-uri </li>
-            <li>Testare functionala si non functionala (UI / UX)</li>
-            <li>Testare de regresie (la actualizari si noi feature-uri)</li>
-            <li>Monitorizare aplicatii (acces sisteme)</li>
-            <li>Testare Api-uri (verificare endpoint-uri, validare raspunsuri si performanta)</li>
-            <br>Ideal pentru: lansari de produse, aplicatii si site-uri noi, companii in crestere dar fara QA dedicat.
-        </ul>
-    </div>
-</div>
-
-<div class="experience">
-    <h2>Am lucrat cu</h2>
-    <div class="experience-wrapper">
-        <ul>
-            <li>Am lucrat in medii cu procese riguroase, sisteme critice si volum mare de utilizatori.</li>
-            <li>Companii SaaS (10-100 angajati)</li>
-            <li>ERP-uri complexe (multi-modul)</li>
-            <li>Startup-uri in faza de scalare</li>
-            <li>Furnizori de servicii digitale si hosting</li>
-            <li>Institutii financiare (banking & fintech)</li>
-        </ul>
-    </div>
-</div>
-
-<footer>
-    © 2026 <span class="brand">a[sand].ro</span><br>Toate drepturile rezervate.<br>📍RO / Bucuresti / Transilvania. 
-</footer>
-
-<div class="cookie-policy" id="cookiePolicy">
-    <div class="cookie-content">
-        <div class="cookie-text">
-            <h3>🍪 Cookie Policy</h3>
-            <p>Acest site foloseste cookie-uri pentru a-ti asigura cea mai buna experienta de navigare si, optional, pentru analiza traficului.</p>
-        </div>
-        <div class="cookie-buttons">
-            <button class="cookie-btn accept" onclick="acceptCookies()">Acceptă</button>
-            <button class="cookie-btn decline" onclick="declineCookies()">Refuză</button>
-        </div>
-    </div>
-</div>
-
-<div class="cookie-icon" id="cookieIcon" onclick="showCookiePolicy()">
-    🍪
-</div>
-
-<div class="fullscreen-overlay" id="fullscreenOverlay" aria-hidden="true">
-    <div class="fullscreen-inner" role="dialog" aria-modal="true" aria-labelledby="fullscreenTitle">
-        <div class="fullscreen-header">
-            <h2 class="fullscreen-title" id="fullscreenTitle"></h2>
-            <button class="fullscreen-close" id="fullscreenCloseBtn" type="button" aria-label="Închide">&times;</button>
-        </div>
-        <div class="fullscreen-content" id="fullscreenBody"></div>
-    </div>
-</div>
-
-<script>
-// Typing effect
-const greetings = ["Bun venit!", "Hej!", "Welcome!"]; 
-const el = document.getElementById("welcome");
-let greetingIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-
-function typeWriter() {
-    const currentGreeting = greetings[greetingIndex];
-    if (!isDeleting && charIndex < currentGreeting.length) {
-        el.textContent += currentGreeting.charAt(charIndex);
-        charIndex++;
-        setTimeout(typeWriter, 150);
-    } else if (!isDeleting && charIndex === currentGreeting.length) {
-        isDeleting = true;
-        setTimeout(typeWriter, 800);
-    } else if (isDeleting && charIndex > 0) {
-        el.textContent = currentGreeting.substring(0, charIndex - 1);
-        charIndex--;
-        setTimeout(typeWriter, 100);
-    } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        greetingIndex = (greetingIndex + 1) % greetings.length;
-        setTimeout(typeWriter, 300);
-    }
-}
-typeWriter();
-
-let hoverTimeout;
-const previewBox = document.getElementById('previewBox');
-
-function buildPreviewHtml(sectionId) {
-    const section = document.getElementById(sectionId);
-    if (!section) return '';
-
-if (sectionId === 'contact') {
-    const p = section.querySelector('p');
-    return `<p>${p.innerText.trim()}..</p>`;
-}
-
-if (sectionId === 'recommend') {
-    const p = section.querySelector('p');
-    return `<p>${p.innerText.trim()}...</p>`;
-}
-
-    if (sectionId === 'about') {
-        const p = section.querySelector('p');
-        let text = p.innerHTML.trim();
-        text = text.replace('Renunta in acest moment!<br>Daca tot ai ramas', 'Renunta in acest moment! Daca tot ai ramas');
-        return `<p>${text}</p>`;
-    }
-
-    const p = section.querySelector('p');
-    return `<p>${p.innerHTML.trim()}</p>`;
-}
-
-function show(id) {
-    clearTimeout(hoverTimeout);
-    document.querySelectorAll('.info').forEach(el => el.style.display = 'none');
-    previewBox.innerHTML = buildPreviewHtml(id);
-    previewBox.style.display = 'block';
-}
-
-function hideAll() {
-    hoverTimeout = setTimeout(() => {
-        document.querySelectorAll('.info').forEach(el => el.style.display = 'none');
-    }, 200);
-}
-
-const overlay = document.getElementById('fullscreenOverlay');
-const overlayTitle = document.getElementById('fullscreenTitle');
-const overlayBody = document.getElementById('fullscreenBody');
-const closeBtn = document.getElementById('fullscreenCloseBtn');
-
-function openFullscreen(sectionId, titleText) {
-    const section = document.getElementById(sectionId);
-    if (!section) return;
-    document.querySelectorAll('.info').forEach(el => el.style.display = 'none');
-    overlayTitle.textContent = titleText;
-    overlayBody.innerHTML = section.innerHTML;
-    overlay.classList.add('show');
-    overlay.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeFullscreen() {
-    overlay.classList.remove('show');
-    overlay.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-}
-
-closeBtn.addEventListener('click', closeFullscreen);
-overlay.addEventListener('click', (e) => { if (e.target === overlay) closeFullscreen(); });
-document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeFullscreen(); });
-
-const buttonToSectionMap = {
-    'Despre mine': 'about',
-    'Abilitati': 'skills',
-    'Ce ma recomanda': 'recommend',
-    'Contact': 'contact'
-};
-
-document.querySelectorAll('.buttons .btn').forEach(btn => {
-    const label = btn.innerText.trim();
-    const sectionId = buttonToSectionMap[label];
-    if (sectionId) btn.addEventListener('click', () => openFullscreen(sectionId, label));
-});
-
-window.addEventListener('load', () => {
-    if (!localStorage.getItem('cookieChoice')) document.getElementById('cookiePolicy').classList.add('show');
-    else document.getElementById('cookieIcon').classList.add('show');
-});
-
-function acceptCookies() {
-    localStorage.setItem('cookieChoice', 'accepted');
-    document.getElementById('cookiePolicy').classList.remove('show');
-    document.getElementById('cookieIcon').classList.add('show');
-}
-
-function declineCookies() {
-    localStorage.setItem('cookieChoice', 'declined');
-    document.getElementById('cookiePolicy').classList.
-    remove('show');
-document.getElementById('cookieIcon').classList.add('show');
-}
-function showCookiePolicy() {
-document.getElementById('cookieIcon').classList.remove('show');
-document.getElementById('cookiePolicy').classList.add('show');
-}
-</script>
 </body>
 </html>
-
-
-
-
