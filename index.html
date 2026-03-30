@@ -9,12 +9,12 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --black:   #111010;
-    --ember:   #ff4a1c;
-    --ash:     #2a2725;
-    --smoke:   #5a5350;
-    --cream:   #f0ece4;
-    --dim:     #8a837c;
+    --black: #111010;
+    --ember: #ff4a1c;
+    --ash:   #2a2725;
+    --smoke: #5a5350;
+    --cream: #f0ece4;
+    --dim:   #8a837c;
   }
 
   html, body {
@@ -24,7 +24,6 @@
     overflow: hidden;
   }
 
-  /* ── NOISE GRAIN OVERLAY ── */
   body::before {
     content: '';
     position: fixed;
@@ -36,7 +35,6 @@
     opacity: 0.55;
   }
 
-  /* ── HOT LINE top ── */
   .hot-line {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -51,18 +49,16 @@
     100% { transform: scaleX(0); transform-origin: right; opacity: 0; }
   }
 
-  /* ── LAYOUT ── */
   .stage {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     height: 100vh;
-    padding: 0 10vw;
+    padding: 80px 10vw 60px;
     position: relative;
   }
 
-  /* ── BIG NUMBER background ── */
   .bg-number {
     position: absolute;
     right: 6vw;
@@ -79,7 +75,6 @@
     animation: fadeUp 1s 0.2s forwards;
   }
 
-  /* ── EYEBROW ── */
   .eyebrow {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: clamp(11px, 1.1vw, 14px);
@@ -87,19 +82,18 @@
     letter-spacing: 0.35em;
     text-transform: uppercase;
     color: var(--ember);
-    margin-bottom: 28px;
+    margin-bottom: 18px;
     opacity: 0;
     animation: fadeUp 0.7s 0.5s forwards;
   }
 
-  /* ── HEADLINE ── */
   h1 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(64px, 10vw, 148px);
-    line-height: 0.9;
+    font-size: clamp(52px, 7.5vw, 110px);
+    line-height: 0.92;
     letter-spacing: 0.01em;
     color: var(--cream);
-    margin-bottom: 42px;
+    margin-bottom: 28px;
     opacity: 0;
     animation: fadeUp 0.7s 0.75s forwards;
   }
@@ -109,29 +103,27 @@
     color: var(--ember);
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 700;
-    font-size: clamp(52px, 8vw, 118px);
+    font-size: clamp(42px, 6.5vw, 90px);
   }
 
-  /* ── DIVIDER ── */
   .rule {
     width: 60px;
     height: 2px;
     background: var(--ember);
-    margin-bottom: 36px;
+    margin-bottom: 22px;
     opacity: 0;
     animation: fadeUp 0.6s 1.05s forwards;
   }
 
-  /* ── SUBTEXT ── */
   .subtext {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: clamp(16px, 2.2vw, 24px);
+    font-size: clamp(15px, 1.8vw, 20px);
     font-weight: 400;
     font-style: italic;
     color: var(--dim);
-    line-height: 1.5;
+    line-height: 1.55;
     max-width: 540px;
-    margin-bottom: 52px;
+    margin-bottom: 32px;
     opacity: 0;
     animation: fadeUp 0.7s 1.2s forwards;
   }
@@ -142,7 +134,6 @@
     font-weight: 700;
   }
 
-  /* ── EMAIL ── */
   .email-line {
     display: flex;
     align-items: center;
@@ -156,8 +147,10 @@
     height: 8px;
     border-radius: 50%;
     background: var(--ember);
+    flex-shrink: 0;
     animation: pulse 1.8s ease-in-out infinite;
   }
+
   @keyframes pulse {
     0%, 100% { box-shadow: 0 0 0 0 rgba(255,74,28,0.7); }
     50%       { box-shadow: 0 0 0 10px rgba(255,74,28,0); }
@@ -174,12 +167,12 @@
     padding-bottom: 2px;
     transition: color 0.2s, border-color 0.2s;
   }
+
   .email-addr:hover {
     color: var(--ember);
     border-color: var(--ember);
   }
 
-  /* ── CORNER BRAND ── */
   .brand {
     position: fixed;
     bottom: 32px;
@@ -193,17 +186,15 @@
     animation: fadeUp 0.6s 1.8s forwards;
   }
 
-  /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(18px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  /* ── RESPONSIVE ── */
   @media (max-width: 600px) {
-    .stage { padding: 0 7vw; justify-content: flex-end; padding-bottom: 14vh; }
+    .stage { padding: 60px 7vw 60px; }
     .bg-number { display: none; }
-    h1 { font-size: clamp(60px, 18vw, 90px); }
+    h1 { font-size: clamp(52px, 16vw, 80px); }
   }
 </style>
 </head>
@@ -240,7 +231,7 @@
 
 </div>
 
-<p class="brand">© 2026 a[sand].ro &nbsp;— &nbsp;București</p>
+<p class="brand">&#169; 2026 a[sand].ro &nbsp;&#8212;&nbsp; București</p>
 
 </body>
 </html>
